@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".activity.SiteLivroActivity">
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical"
+  tools:context=".activity.SiteLivroActivity">
 
     <include layout="@layout/include_toolbar"/>
 
@@ -13,10 +13,15 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent">
 
-        <WebView
-          android:id="@+id/webview"
+        <android.support.v4.widget.SwipeRefreshLayout
+          android:id="@+id/swipeToRefresh"
           android:layout_width="match_parent"
-          android:layout_height="match_parent" />
+          android:layout_height="match_parent">
+            <WebView
+              android:id="@+id/webview"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" />
+        </android.support.v4.widget.SwipeRefreshLayout>
 
         <ProgressBar
           android:id="@+id/progress"
