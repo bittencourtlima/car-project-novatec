@@ -16,7 +16,8 @@ import kotlinx.android.synthetic.main.include_toolbar.*
 import livroandroid.com.br.carros.R
 import livroandroid.com.br.carros.domain.TipoCarro
 import livroandroid.com.br.carros.extensions.setupToolbar
-import livroandroid.com.br.carros.extensions.toast
+import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.toast
 
 class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -73,19 +74,13 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 toast("Clicou em carros")
             }
             R.id.nav_item_carros_classicos -> {
-                val intent = Intent(context, CarrosActivity::class.java)
-                intent.putExtra("tipo", TipoCarro.Classicos)
-                startActivity(intent)
+                startActivity<CarrosActivity>("tipo" to TipoCarro.Classicos)
             }
             R.id.nav_item_carros_esportivos -> {
-                val intent = Intent(context, CarrosActivity::class.java)
-                intent.putExtra("tipo", TipoCarro.Esportivos)
-                startActivity(intent)
+                startActivity<CarrosActivity>("tipo" to TipoCarro.Esportivos)
             }
             R.id.nav_item_carros_luxo -> {
-                val intent = Intent(context, CarrosActivity::class.java)
-                intent.putExtra("tipo", TipoCarro.Luxo)
-                startActivity(intent)
+                startActivity<CarrosActivity>("tipo" to TipoCarro.Luxo)
             }
             R.id.nav_item_site_livro -> {
                 toast("Clicou em site de livro")

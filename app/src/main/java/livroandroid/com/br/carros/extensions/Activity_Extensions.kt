@@ -26,6 +26,3 @@ fun AppCompatActivity.addFragment(@IdRes layoutId: Int, fragment: Fragment) {
     ft.commit()
 }
 
-fun AppCompatActivity.toast(message: CharSequence, length: Int = Toast.LENGTH_SHORT) = Toast.makeText(this, message, length).show()
-
-fun AppCompatActivity.toast(@StringRes message: Int, length: Int = Toast.LENGTH_SHORT) = Toast.makeText(this, message, length).show()
