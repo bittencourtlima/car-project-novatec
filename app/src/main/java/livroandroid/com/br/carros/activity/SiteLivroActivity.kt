@@ -5,10 +5,12 @@ import android.view.View
 
 import android.os.Bundle
 import android.support.v4.widget.SwipeRefreshLayout
+import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.ProgressBar
 import livroandroid.com.br.carros.R
+import livroandroid.com.br.carros.dialog.AboutDialog
 import livroandroid.com.br.carros.extensions.setupToolbar
 
 class SiteLivroActivity : BaseActivity() {
@@ -50,6 +52,15 @@ class SiteLivroActivity : BaseActivity() {
             override fun onPageFinished(view: WebView?, url: String?) {
                 progress?.visibility = View.INVISIBLE
                 swipeToRefresh?.isRefreshing = false
+            }
+
+            override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
+                val url = request?.url.toString()
+                if(url.endsWith("sobre.htm")){
+                    AboutDialog.showAbout(supportFragmentManager)
+                    return true;
+                }
+                return super.shouldOverrideUrlLoading(view, request)
             }
         }
     }
