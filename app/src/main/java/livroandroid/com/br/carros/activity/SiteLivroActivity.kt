@@ -16,9 +16,9 @@ import livroandroid.com.br.carros.extensions.setupToolbar
 class SiteLivroActivity : BaseActivity() {
 
     private val URL_SOBRE = "http://www.livroandroid.com.br/sobre.htm"
-    var webview: WebView? = null
-    var progress: ProgressBar? = null
-    var swipeToRefresh: SwipeRefreshLayout? = null
+    lateinit var webview: WebView
+    lateinit var progress: ProgressBar
+    lateinit var swipeToRefresh: SwipeRefreshLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,10 +31,10 @@ class SiteLivroActivity : BaseActivity() {
         swipeToRefresh = findViewById(R.id.swipeToRefresh)
 
         setWebViewClient(webview)
-        webview?.loadUrl(URL_SOBRE)
+        webview.loadUrl(URL_SOBRE)
 
-        swipeToRefresh?.setOnRefreshListener {
-            webview?.reload()
+        swipeToRefresh.setOnRefreshListener {
+            webview.reload()
         }
 
         swipeToRefresh?.setColorSchemeResources(
@@ -47,10 +47,10 @@ class SiteLivroActivity : BaseActivity() {
     private fun setWebViewClient(webview: WebView?) {
         webview?.webViewClient = object : WebViewClient() {
             override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
-                progress?.visibility = View.VISIBLE
+                progress.visibility = View.VISIBLE
             }
             override fun onPageFinished(view: WebView?, url: String?) {
-                progress?.visibility = View.INVISIBLE
+                progress.visibility = View.INVISIBLE
                 swipeToRefresh?.isRefreshing = false
             }
 
