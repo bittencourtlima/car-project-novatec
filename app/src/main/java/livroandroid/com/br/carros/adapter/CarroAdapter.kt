@@ -30,11 +30,12 @@ class CarroAdapter (
     override fun onBindViewHolder(holder: CarrosViewHolder, position: Int) {
         val carro = carros[position]
 
-        holder.itemView.tNome.text = carro.nome
+        with(holder.itemView){
+            tNome.text = carro.nome
+            img.loadImage(carro.urlFoto, holder.itemView.progress)
+            setOnClickListener{ onClick(carro) }
+        }
 
-        holder.itemView.img.loadImage(carro.urlFoto, holder.itemView.progress)
-
-        holder.itemView.setOnClickListener{ onClick(carro) }
     }
 
 }
