@@ -1,10 +1,8 @@
 package livroandroid.com.br.carros.activity
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.LinearLayoutManager
-import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_carros.*
 import livroandroid.com.br.carros.R
 import livroandroid.com.br.carros.adapter.CarroAdapter
@@ -12,7 +10,7 @@ import livroandroid.com.br.carros.domain.Carro
 import livroandroid.com.br.carros.domain.CarroService
 import livroandroid.com.br.carros.domain.TipoCarro
 import livroandroid.com.br.carros.extensions.setupToolbar
-import org.jetbrains.anko.toast
+import org.jetbrains.anko.startActivity
 
 class CarrosActivity : BaseActivity() {
 
@@ -42,6 +40,6 @@ class CarrosActivity : BaseActivity() {
     }
 
     private fun onClickCarro(carro: Carro) {
-        toast("@Clicou no carro ${carro.nome}")
+        startActivity<CarroActivity>("carro" to carro)
     }
 }

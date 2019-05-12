@@ -1,28 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="livroandroid.com.br.carros">
+          package="livroandroid.com.br.carros">
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
-      android:name=".CarrosApplication"
-      android:allowBackup="true"
-      android:icon="@mipmap/ic_launcher"
-      android:label="@string/app_name"
-      android:roundIcon="@mipmap/ic_launcher_round"
-      android:supportsRtl="true"
-      android:theme="@style/AppTheme">
-        <activity android:name=".activity.SiteLivroActivity"
-          android:parentActivityName=".activity.MainActivity">
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:name=".CarrosApplication"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme">
+        <activity
+                android:name=".activity.CarroActivity"
+                android:parentActivityName=".activity.MainActivity">
         </activity>
         <activity
-          android:name=".activity.CarrosActivity"
-          android:parentActivityName=".activity.MainActivity">
+                android:name=".activity.SiteLivroActivity"
+                android:parentActivityName=".activity.MainActivity">
         </activity>
         <activity
-          android:name=".activity.MainActivity"
-          android:label="@string/app_name"
-          android:theme="@style/AppTheme.NavDrawer">
+                android:name=".activity.CarrosActivity"
+                android:parentActivityName=".activity.MainActivity">
+        </activity>
+        <activity
+                android:label="@string/app_name"
+                android:name=".activity.MainActivity"
+                android:theme="@style/AppTheme.NavDrawer">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
