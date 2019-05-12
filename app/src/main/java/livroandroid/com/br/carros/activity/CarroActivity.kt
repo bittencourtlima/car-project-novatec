@@ -10,15 +10,12 @@ import livroandroid.com.br.carros.extensions.setupToolbar
 
 class CarroActivity : AppCompatActivity() {
 
-    var carro: Carro? = null
+    val carro by lazy { intent.getSerializableExtra("carro") as Carro }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_carro)
-        setupToolbar(R.id.toolbar, upNavigation = true);
-
-        carro = intent.getSerializableExtra("carro") as Carro
-        supportActionBar?.title = carro?.nome
+        setupToolbar(R.id.toolbar, carro.nome,true);
 
         tDesc.text = carro?.desc
         img.loadImage(carro?.urlFoto)
