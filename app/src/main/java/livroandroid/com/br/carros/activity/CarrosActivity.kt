@@ -10,12 +10,12 @@ import livroandroid.com.br.carros.domain.Carro
 import livroandroid.com.br.carros.domain.CarroService
 import livroandroid.com.br.carros.domain.TipoCarro
 import livroandroid.com.br.carros.extensions.setupToolbar
+import livroandroid.com.br.carros.fragments.CarrosFragment
 import org.jetbrains.anko.startActivity
 
 class CarrosActivity : BaseActivity() {
 
     private var tipo: TipoCarro = TipoCarro.Classicos
-    private var carros = listOf<Carro>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_carros)
@@ -23,23 +23,14 @@ class CarrosActivity : BaseActivity() {
         val tipoCarro = getString(tipo.tipoCarro)
         setupToolbar(R.id.toolbar, tipoCarro, true)
 
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.itemAnimator = DefaultItemAnimator()
-        recyclerView.setHasFixedSize(true)
+        if(savedInstanceState == null){
+            val fragment = CarrosFragment()
+
+            fragment.arguments = intent.extras
+
+            supportFragmentManager.beginTransaction().add(R.id.container, fragment).commit()
+        }
 
     }
 
-    override fun onResume() {
-        super.onResume()
-        taskCarros()
-    }
-
-    private fun taskCarros() {
-        val carros = CarroService.getCarros(context, tipo)
-        recyclerView.adapter = CarroAdapter(carros) { onClickCarro(it) }
-    }
-
-    private fun onClickCarro(carro: Carro) {
-        startActivity<CarroActivity>("carro" to carro)
-    }
 }
