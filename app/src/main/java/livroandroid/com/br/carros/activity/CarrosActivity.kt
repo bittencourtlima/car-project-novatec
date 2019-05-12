@@ -38,6 +38,10 @@ class CarrosActivity : BaseActivity() {
 
     private fun taskCarros() {
         val carros = CarroService.getCarros(context, tipo)
-        recyclerView.adapter = CarroAdapter(carros, { toast("@Clicou no carro ${it.nome}")})
+        recyclerView.adapter = CarroAdapter(carros) { onClickCarro(it) }
+    }
+
+    private fun onClickCarro(carro: Carro) {
+        toast("@Clicou no carro ${carro.nome}")
     }
 }
