@@ -8,11 +8,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
-import com.squareup.picasso.Callback
-import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.adapter_carro.view.*
 import livroandroid.com.br.carros.R
 import livroandroid.com.br.carros.domain.Carro
+import livroandroid.com.br.carros.extensions.loadImage
+import kotlinx.android.synthetic.main.adapter_carro.view.*
 
 class CarroAdapter (
     val carros: List<Carro>,
@@ -38,23 +37,8 @@ class CarroAdapter (
         val carro = carros[position]
 
         holder.tNome.text = carro.nome
-        holder.progress.visibility = View.VISIBLE
 
-        if(carro.urlFoto.trim().isEmpty()){
-            holder.img.setImageBitmap(null)
-        }else{
-
-            Picasso.with(context).load(carro.urlFoto).fit().into(holder.img, object: Callback{
-                override fun onSuccess() {
-                    holder.progress.visibility = View.GONE
-                }
-
-                override fun onError() {
-                    holder.progress.visibility = View.GONE
-                }
-
-            })
-        }
+        holder.img.loadImage(carro.urlFoto, holder.progress)
 
         holder.itemView.setOnClickListener{ onClick(carro) }
     }
