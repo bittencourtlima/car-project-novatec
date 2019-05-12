@@ -1,19 +1,15 @@
 package livroandroid.com.br.carros.activity
 
-import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.app_bar_main.*
-import kotlinx.android.synthetic.main.include_toolbar.*
 import livroandroid.com.br.carros.R
+import livroandroid.com.br.carros.adapter.TabsAdapter
 import livroandroid.com.br.carros.domain.TipoCarro
 import livroandroid.com.br.carros.extensions.setupToolbar
 import org.jetbrains.anko.startActivity
@@ -26,12 +22,17 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         setContentView(R.layout.activity_main)
         setupToolbar(R.id.toolbar)
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
-
         setupNavDrawer()
+
+        setupViewPagerTabs()
+    }
+
+    private fun setupViewPagerTabs() {
+        viewPager.offscreenPageLimit = 2
+        viewPager.adapter = TabsAdapter(context, supportFragmentManager)
+        tabLayout.setupWithViewPager(viewPager)
+
+//        val cor =
     }
 
     private fun setupNavDrawer() {

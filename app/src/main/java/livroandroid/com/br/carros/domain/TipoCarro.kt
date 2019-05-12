@@ -2,6 +2,7 @@ package livroandroid.com.br.carros.domain
 
 import android.support.annotation.IdRes
 import livroandroid.com.br.carros.R
+import java.io.Serializable
 
 enum class TipoCarro(val tipoCarro: Int) {
     Classicos(R.string.classicos),
