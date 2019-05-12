@@ -18,10 +18,6 @@ class CarroAdapter (
     val onClick: (Carro) -> Unit) : RecyclerView.Adapter<CarroAdapter.CarrosViewHolder>(){
 
     class CarrosViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        var tNome: TextView = view.findViewById(R.id.tNome)
-        var img: ImageView = view.findViewById(R.id.img)
-        var progress: ProgressBar = view.findViewById(R.id.progress)
-        var cardView: CardView = view.findViewById(R.id.card_view)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarrosViewHolder {
@@ -32,13 +28,11 @@ class CarroAdapter (
     override fun getItemCount(): Int = carros.size
 
     override fun onBindViewHolder(holder: CarrosViewHolder, position: Int) {
-        val context = holder.itemView.context
-
         val carro = carros[position]
 
-        holder.tNome.text = carro.nome
+        holder.itemView.tNome.text = carro.nome
 
-        holder.img.loadImage(carro.urlFoto, holder.progress)
+        holder.itemView.img.loadImage(carro.urlFoto, holder.itemView.progress)
 
         holder.itemView.setOnClickListener{ onClick(carro) }
     }
