@@ -37,7 +37,6 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         viewPager.adapter = TabsAdapter(context, supportFragmentManager)
         tabLayout.setupWithViewPager(viewPager)
 
-//        val cor =
     }
 
     private fun setupNavDrawer() {

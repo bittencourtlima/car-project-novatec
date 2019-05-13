@@ -10,14 +10,13 @@
   tools:openDrawer="start">
 
   <android.support.design.widget.CoordinatorLayout
+    android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-      android:id="@+id/content"
+    <android.support.design.widget.AppBarLayout
       android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:orientation="vertical">
+      android:layout_height="wrap_content">
 
       <include layout="@layout/include_toolbar"/>
 
@@ -28,16 +27,18 @@
         android:background="@color/primary"
         app:tabTextColor="@color/white"/>
 
-      <android.support.v4.view.ViewPager
-        android:id="@+id/viewPager"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@color/white">
+    </android.support.design.widget.AppBarLayout>
 
-      </android.support.v4.view.ViewPager>
+    <android.support.v4.view.ViewPager
+      android:id="@+id/viewPager"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:background="@color/white"
+      app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    </LinearLayout>
+    </android.support.v4.view.ViewPager>
+
+
 
     <android.support.design.widget.FloatingActionButton
       android:id="@+id/fab"
