@@ -1,14 +1,11 @@
 package livroandroid.com.br.carros.activity
 
 import android.graphics.Bitmap
-import android.view.View
-
 import android.os.Bundle
-import android.support.v4.widget.SwipeRefreshLayout
+import android.view.View
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import android.widget.ProgressBar
 import kotlinx.android.synthetic.main.activity_site_livro.*
 import livroandroid.com.br.carros.R
 import livroandroid.com.br.carros.dialog.AboutDialog

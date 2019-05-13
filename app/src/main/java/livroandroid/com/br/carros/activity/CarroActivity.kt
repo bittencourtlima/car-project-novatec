@@ -1,7 +1,7 @@
 package livroandroid.com.br.carros.activity
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_carro.*
 import livroandroid.com.br.carros.R
 import livroandroid.com.br.carros.domain.Carro

@@ -1,17 +1,13 @@
 package livroandroid.com.br.carros.adapter
 
-import android.support.v7.widget.CardView
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.ProgressBar
-import android.widget.TextView
+import kotlinx.android.synthetic.main.adapter_carro.view.*
 import livroandroid.com.br.carros.R
 import livroandroid.com.br.carros.domain.Carro
 import livroandroid.com.br.carros.extensions.loadImage
-import kotlinx.android.synthetic.main.adapter_carro.view.*
 
 class CarroAdapter (
     val carros: List<Carro>,

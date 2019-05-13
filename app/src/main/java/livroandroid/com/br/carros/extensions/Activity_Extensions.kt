@@ -1,12 +1,10 @@
 package livroandroid.com.br.carros.extensions
 
 import android.support.annotation.IdRes
-import android.support.annotation.StringRes
 import android.support.v4.app.Fragment
 import android.support.v7.app.ActionBar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
-import android.widget.Toast
 
 fun AppCompatActivity.setupToolbar(@IdRes id: Int, title: String? = null, upNavigation: Boolean = false): ActionBar {
     val toolbar = findViewById<Toolbar>(id)

@@ -2,7 +2,6 @@ package livroandroid.com.br.carros
 
 import android.app.Application
 import android.util.Log
-import java.lang.IllegalStateException
 
 class CarrosApplication : Application() {
 
