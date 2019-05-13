@@ -2,6 +2,7 @@ package livroandroid.com.br.carros.activity
 
 import android.os.Bundle
 import android.support.design.widget.NavigationView
+import android.support.design.widget.Snackbar
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.widget.Toolbar
@@ -25,6 +26,10 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         setupNavDrawer()
 
         setupViewPagerTabs()
+
+        fab.setOnClickListener{
+            Snackbar.make(it,"Fab!",Snackbar.LENGTH_SHORT).show()
+        }
     }
 
     private fun setupViewPagerTabs() {
