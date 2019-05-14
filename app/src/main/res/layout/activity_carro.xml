@@ -1,58 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.design.widget.CoordinatorLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   android:orientation="vertical"
-  tools:context=".activity.CarroActivity">
+  tools:context=".activity.CarroActivity"
+  android:fitsSystemWindows="true">
 
-  <include layout="@layout/include_toolbar" />
-
-  <android.support.v7.widget.CardView
-    android:id="@+id/card_view"
+  <android.support.v4.widget.NestedScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:clickable="true"
-    android:layout_margin="6dp"
-    app:cardBackgroundColor="@color/white"
-    app:cardCornerRadius="6dp"
-    app:cardElevation="6dp">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <LinearLayout
+    <include layout="@layout/include_activity_carro"/>
+  </android.support.v4.widget.NestedScrollView>
+
+  <android.support.design.widget.AppBarLayout
+    android:id="@+id/appbar"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:fitsSystemWindows="true"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+    <android.support.design.widget.CollapsingToolbarLayout
+      android:id="@+id/collapsing_toolbar"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:orientation="vertical"
-      android:padding="2dp">
+      android:fitsSystemWindows="true"
+      app:contentScrim="@color/primary"
+      app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
       <ImageView
-        android:id="@+id/img"
-        android:layout_width="@dimen/foto_carro_width"
-        android:layout_height="@dimen/foto_carro_height"
-        android:layout_gravity="center"
-        android:padding="2dp"
-        android:scaleType="center"
-        />
-      <View
-        android:background="@color/gray"
+        android:id="@+id/appBarImg"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="6dp"
-        android:layout_marginBottom="6dp"
-        />
-      <ScrollView
+        android:layout_height="match_parent"
+        android:background="@drawable/header_appbar"
+        android:fitsSystemWindows="true"
+        app:layout_collapseMode="parallax"/>
+
+      <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-          android:id="@+id/tDesc"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:textColor="@color/primary_dark"
-          android:layout_margin="8dp"/>
-      </ScrollView>
-    </LinearLayout>
+        android:layout_height="?attr/actionBarSize"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        app:layout_collapseMode="pin"
+        />
 
-  </android.support.v7.widget.CardView>
+    </android.support.design.widget.CollapsingToolbarLayout>
+
+  </android.support.design.widget.AppBarLayout>
+
+  <android.support.design.widget.FloatingActionButton
+    android:id="@+id/fab"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/fab_margin"
+    android:clickable="true"
+    android:src="@drawable/ic_favorite"
+    android:tint="@color/gray"
+    app:layout_anchor="@id/appbar"
+    app:layout_anchorGravity="bottom|right|end"/>
 
 
-</LinearLayout>
+
+
+
+</android.support.design.widget.CoordinatorLayout>
