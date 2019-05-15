@@ -6,6 +6,7 @@ import android.util.Log
 import livroandroid.com.br.carros.R
 import livroandroid.com.br.carros.extensions.getText
 import livroandroid.com.br.carros.extensions.getXml
+import org.json.JSONArray
 
 object CarroService {
 
@@ -18,8 +19,8 @@ object CarroService {
 
         val inputStream = resources.openRawResource(raw)
         inputStream.bufferedReader().use {
-            val xml = it.readText()
-            val carros = parserXML(xml)
+            val json = it.readText()
+            val carros = parserJson(json)
             return carros
         }
     }
@@ -43,6 +44,24 @@ object CarroService {
             c.desc = node.getText("desc")
             c.urlFoto = node.getText("url_foto")
             Log.d("carro",c.urlFoto)
+
+            carros.add(c)
+        }
+        Log.d(TAG, "${carros.size} carros encontrados")
+        return carros
+    }
+
+    private fun parserJson(json: String): List<Carro>{
+        val carros = mutableListOf<Carro>()
+
+        val array = JSONArray(json)
+        for(i in 0 until array.length()){
+            val jsonCarro = array.getJSONObject(i)
+            val c = Carro()
+
+            c.nome = jsonCarro.optString("nome")
+            c.desc = jsonCarro.optString("desc")
+            c.urlFoto = jsonCarro.optString("url_foto")
 
             carros.add(c)
         }
