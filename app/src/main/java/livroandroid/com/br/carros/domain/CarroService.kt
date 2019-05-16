@@ -1,12 +1,8 @@
 package livroandroid.com.br.carros.domain
 
 import android.content.Context
-import android.icu.lang.UCharacter.GraphemeClusterBreak.L
-import android.util.Log
 import livroandroid.com.br.carros.R
-import livroandroid.com.br.carros.extensions.getText
-import livroandroid.com.br.carros.extensions.getXml
-import org.json.JSONArray
+import livroandroid.com.br.carros.extensions.fromJson
 
 object CarroService {
 
@@ -20,7 +16,7 @@ object CarroService {
         val inputStream = resources.openRawResource(raw)
         inputStream.bufferedReader().use {
             val json = it.readText()
-            val carros = parserJson(json)
+            val carros = fromJson<List<Carro>>(json)
             return carros
         }
     }
@@ -31,43 +27,43 @@ object CarroService {
         else -> R.raw.carros_luxo
     }
 
-    private fun parserXML(xmlString: String): List<Carro>{
-        val carros = mutableListOf<Carro>()
-        val xml = xmlString.getXml()
-
-        val nodeCarros = xml.getChildren("carro")
-
-        for(node in nodeCarros){
-            val c = Carro()
-
-            c.nome = node.getText("nome")
-            c.desc = node.getText("desc")
-            c.urlFoto = node.getText("url_foto")
-            Log.d("carro",c.urlFoto)
-
-            carros.add(c)
-        }
-        Log.d(TAG, "${carros.size} carros encontrados")
-        return carros
-    }
-
-    private fun parserJson(json: String): List<Carro>{
-        val carros = mutableListOf<Carro>()
-
-        val array = JSONArray(json)
-        for(i in 0 until array.length()){
-            val jsonCarro = array.getJSONObject(i)
-            val c = Carro()
-
-            c.nome = jsonCarro.optString("nome")
-            c.desc = jsonCarro.optString("desc")
-            c.urlFoto = jsonCarro.optString("url_foto")
-
-            carros.add(c)
-        }
-        Log.d(TAG, "${carros.size} carros encontrados")
-        return carros
-    }
+//    private fun parserXML(xmlString: String): List<Carro>{
+//        val carros = mutableListOf<Carro>()
+//        val xml = xmlString.getXml()
+//
+//        val nodeCarros = xml.getChildren("carro")
+//
+//        for(node in nodeCarros){
+//            val c = Carro()
+//
+//            c.nome = node.getText("nome")
+//            c.desc = node.getText("desc")
+//            c.urlFoto = node.getText("url_foto")
+//            Log.d("carro",c.urlFoto)
+//
+//            carros.add(c)
+//        }
+//        Log.d(TAG, "${carros.size} carros encontrados")
+//        return carros
+//    }
+//
+//    private fun parserJson(json: String): List<Carro>{
+//        val carros = mutableListOf<Carro>()
+//
+//        val array = JSONArray(json)
+//        for(i in 0 until array.length()){
+//            val jsonCarro = array.getJSONObject(i)
+//            val c = Carro()
+//
+//            c.nome = jsonCarro.optString("nome")
+//            c.desc = jsonCarro.optString("desc")
+//            c.urlFoto = jsonCarro.optString("url_foto")
+//
+//            carros.add(c)
+//        }
+//        Log.d(TAG, "${carros.size} carros encontrados")
+//        return carros
+//    }
 
 
 
